@@ -255,11 +255,226 @@ app.post("/personDetails", (req, res) => {
 })    
 
 
+//delete
+
+app.delete("/persons/:id", (req, res) => {
+
+    const {id} = req.params;
+
+    db.query(`DELETE FROM Person WHERE PersonId = ?`, [id], (err, res, fields) => {
+        if( err) {console.log(err);
+
+        console.log("Error in deleting from person");
+        
+        }
+        else {
+            console.log(`Deleted person with id ${id}`);
+            // res.status(204).send()
+        }
+    })
+})
+
+
+app.delete("/vehicle/:id", (req, res) => {
+
+    const {id} = req.params;
+
+    db.query(`DELETE FROM Vehicle WHERE VehicleId = ?`, [id], (err, res, fields) => {
+        if( err) {console.log(err);
+
+        console.log("Error in deleting from Vehicle");
+        
+        }
+        else {
+            console.log(`Deleted Vehicle with id ${id}`);
+            // res.status(204).send()
+        }
+    })
+})
+
+app.delete("/booking/:id", (req, res) => {
+
+    const {id} = req.params;
+
+    db.query(`DELETE FROM Booking WHERE BookingId = ?`, [id], (err, res, fields) => {
+        if( err) {console.log(err);
+
+        console.log("Error in deleting from Booking");
+        
+        }
+        else {
+            console.log(`Deleted Booking with id ${id}`);
+            // res.status(204).send()
+        }
+    })
+})
+
+
+app.delete("/driver/:id", (req, res) => {
+
+    const {id} = req.params;
+
+    db.query(`DELETE FROM Driver WHERE DriverId = ?`, [id], (err, res, fields) => {
+        if( err) {console.log(err);
+
+        console.log("Error in deleting from Driver");
+        
+        }
+        else {
+            console.log(`Deleted Driver with id ${id}`);
+            // res.status(204).send()
+        }
+    })
+})
+
+
+app.delete("/payment/:id", (req, res) => {
+
+    const {id} = req.params;
+
+    db.query(`DELETE FROM Payment WHERE PaymentId = ?`, [id], (err, res, fields) => {
+        if( err) {console.log(err);
+
+        console.log("Error in deleting from Payment");
+        
+        }
+        else {
+            console.log(`Deleted Payment with id ${id}`);
+            // res.status(204).send()
+        }
+    })
+})
+
+
+app.delete("/userType/:id", (req, res) => {
+
+    const {id} = req.params;
+
+    db.query(`DELETE FROM UserType WHERE SusbscriptionId = ?`, [id], (err, res, fields) => {
+        if( err) {console.log(err);
+
+        console.log("Error in deleting from userType");
+        
+        }
+        else {
+            console.log(`Deleted userType with id ${id}`);
+            // res.status(204).send()
+        }
+    })
+})
+
+
+app.delete("/mainUser/:id", (req, res) => {
+
+    const {id} = req.params;
+
+    db.query(`DELETE FROM MainUSer WHERE UserId = ?`, [id], (err, res, fields) => {
+        if( err) {console.log(err);
+
+        console.log("Error in deleting from MainUser");
+        
+        }
+        else {
+            console.log(`Deleted MainUser with id ${id}`);
+            // res.status(204).send()
+        }
+    })
+})
 
 
 
+app.delete("/books/:id", (req, res) => {
+
+    const {id} = req.params;
+
+    db.query(`DELETE FROM Books WHERE VehicleId = ?`, [id], (err, res, fields) => {
+        if( err) {console.log(err);
+
+        console.log("Error in deleting from Vehicle");
+        
+        }
+        else {
+            console.log(`Deleted Vehicle with id ${id}`);
+            // res.status(204).send()
+        }
+    })
+})
 
 
+
+app.delete("/vehicle/:id", (req, res) => {
+
+    const {id} = req.params;
+
+    db.query(`DELETE FROM Vehicle WHERE VehicleId = ?`, [id], (err, res, fields) => {
+        if( err) {console.log(err);
+
+        console.log("Error in deleting from Vehicle");
+        
+        }
+        else {
+            console.log(`Deleted Vehicle with id ${id}`);
+            // res.status(204).send()
+        }
+    })
+})
+
+
+
+app.delete("/vehicle/:id", (req, res) => {
+
+    const {id} = req.params;
+
+    db.query(`DELETE FROM Vehicle WHERE VehicleId = ?`, [id], (err, res, fields) => {
+        if( err) {console.log(err);
+
+        console.log("Error in deleting from Vehicle");
+        
+        }
+        else {
+            console.log(`Deleted Vehicle with id ${id}`);
+            // res.status(204).send()
+        }
+    })
+})
+
+
+
+app.delete("/vehicle/:id", (req, res) => {
+
+    const {id} = req.params;
+
+    db.query(`DELETE FROM Vehicle WHERE VehicleId = ?`, [id], (err, res, fields) => {
+        if( err) {console.log(err);
+
+        console.log("Error in deleting from Vehicle");
+        
+        }
+        else {
+            console.log(`Deleted Vehicle with id ${id}`);
+            // res.status(204).send()
+        }
+    })
+})
+
+
+
+app.delete("/vehicle/:id", (req, res) => {
+
+    const {id} = req.params;
+
+    db.query(`DELETE FROM Vehicle WHERE VehicleId = ?`, [id], (err, res, fields) => {
+        if( err) {console.log(err);
+
+        console.log("Error in deleting from Vehicle");
+        
+        }
+        else {
+            console.log(`Deleted Vehicle with id ${id}`);
+            // res.status(204).send()
+        }
+    })
+})
 
 
 
