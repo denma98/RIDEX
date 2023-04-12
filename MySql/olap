@@ -1,0 +1,81 @@
+use cabsystem;
+
+CREATE TABLE BookingLog(
+BookingId INT ,
+BookingTimeStamp timestamp Not null,
+fare double Not null,
+JourneyStatus boolean default false, -- completed or not-- 
+StartLocation VARCHAR(100) default NULL, 
+EndLocation VARCHAR(100) default NULL,	
+JourneyRating INT default NULL
+);
+
+drop Trigger addToLog;
+
+DELIMITER $$
+CREATE TRIGGER addToLog BEFORE UPDATE ON booking for each row 
+BEGIN 
+INSERT INTO BookingLog VALUES (OLD.BookingId, OLD.BookingTimeStamp, OLD.fare, OLD.JourneyStatus, OLD.StartLocation,OLD.EndLocation, OLD.JourneyRating   );
+
+END $$
+
+DELIMITER ;
+
+select * from BookingLog;
+
+update Booking set fare = 1.5 * fare where BookingId = 20;
+
+
+-- 2nd trigger
+CREATE TABLE VehicleLog(
+VehicleId INT ,
+VehicleType VARCHAR(225) NOT NULL,
+CurrentLocation VARCHAR(225) default NULL,
+StartLocation VARCHAR(100) default NULL,
+EndLocation VARCHAR(100) default NULL,
+Availability boolean default true,
+Capacity INT NOT NULL,
+PlateNO VARCHAR(100) NOT NULL
+);
+
+DELIMITER $$
+
+CREATE trigger vehicleAvail AFTER UPDATE ON Vehicle for each row
+BEGIN
+if OLD.Availability = TRUE then 
+insert into VehicleLog values(OLD.VehicleId, OLD.VehicleType, OLD.CurrentLocation, OLD.StartLocation, OLD.EndLocation, false, OLD.Capacity, OLD.PlateNO);
+elseif OLD.Availability = False then
+insert into VehicleLog values(OLD.VehicleId,OLD.VehicleType, OLD.CurrentLocation, OLD.StartLocation, OLD.EndLocation, false, OLD.Capacity, OLD.PlateNo);
+
+END if ;
+
+END $$ 
+
+DELIMITER ;
+
+update Vehicle set availability = true where vehicleId = 31;
+
+select * from VehicleLog;
+
+
+-- OLAP QUERY 1 simple which peroduces results similar to grouping sets
+
+Select vehicleId, DriverID from MakesPayment group by vehicleId , DriverId having count(*) >1;
+
+-- demonstrating slice operation
+
+Select max(UserId ),vehicleId, DriverID from MakesPayment WHERE UserId in ( select UserId from MainUser WHERE PersonId in ( select PersonId from Person where City = "Delhi")) group by vehicleId , DriverId ;
+
+-- demonstrating rollup 
+
+ select DateOfJoining, VehicleId, max(DriverRating) from driver WHERE DriverId in (select driverId from Driver where VehicleId in (Select vehicleId from Vehicle)) group by DateOfJoining, vehicleId with rollup;
+ 
+ -- rollup query 2 
+ 
+SELECT Method, BookingId, MAX(JourneyStatus) 
+FROM Payment 
+WHERE BookingId IN (SELECT BookingId FROM Booking WHERE JourneyStatus IS NOT NULL) 
+GROUP BY Method, BookingId WITH ROLLUP;
+
+
+ 

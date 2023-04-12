@@ -1,0 +1,124 @@
+create database CabSystem;
+use CabSystem;
+
+CREATE TABLE Person(
+PersonId INT PRIMARY KEY auto_increment,
+Firstname VARCHAR(225) Not Null,
+MiddleName varchar(225) default Null,
+LastName varchar(225) Not Null,
+StreetNumber INT Default null,
+StreetName varchar(225) Not Null,
+City varchar(225) Not Null,
+State varchar(225) Not Null,
+Zip INT Not Null,
+DOB date Not Null
+);
+
+select *from vehicle;
+
+CREATE TABLE Vehicle(
+VehicleId INT PRIMARY KEY auto_increment,
+VehicleType VARCHAR(225) NOT NULL,
+CurrentLocation VARCHAR(225) default NULL,
+StartLocation VARCHAR(100) default NULL,
+EndLocation VARCHAR(100) default NULL,
+Availability boolean default true,
+Capacity INT NOT NULL,
+PlateNO VARCHAR(100) NOT NULL
+);
+
+
+-- alter table Vehicle add PlateNo varchar(100) not null;
+CREATE INDEX Vehicle ON Booking (CurrentLocation);
+ 
+
+CREATE TABLE Booking(
+BookingId INT PRIMARY KEY auto_increment,
+BookingTimeStamp timestamp Not null,
+fare double Not null,
+JourneyStatus boolean default false, -- completed or not-- 
+StartLocation VARCHAR(100) default NULL, 
+EndLocation VARCHAR(100) default NULL,	
+JourneyRating INT default NULL
+-- foreign key(PaymentId) references 
+); 
+
+select *from MainUser;
+
+CREATE TABLE Driver(
+DriverId INT PRIMARY KEY auto_increment,
+PersonId INT not null,
+DateOfJoining date Not NULL,
+DrivingLicence VARCHAR(100) NOT NULL,
+DriverRating INT default 1,
+foreign key(PersonId) references Person(PersonId)
+);
+
+alter Table driver add VehicleId int default Null;
+
+select * from Driver;
+
+
+CREATE TABLE Payment(
+PaymentId INT PRIMARY KEY auto_increment,
+BookingId INT not null,
+Method VARCHAR(225) Not null,
+PaymentTimeStamp timestamp Not null,
+Ammount INT not null,
+foreign key(BookingId) references Booking(BookingId)
+);
+
+
+CREATE TABLE UserType(
+SubscriptionId INT PRIMARY KEY auto_increment,
+Normal boolean default true,
+Elite boolean default false,
+Prime boolean default false,
+UserId Int not null,
+foreign key(UserId) references MainUser(UserId)
+);
+
+select * from Person;
+CREATE TABLE MainUser(
+UserId INT PRIMARY KEY auto_increment,
+SubscriptionType VARCHAR(225) default "normal",
+PersonId INT not null,
+foreign key(PersonId) references Person(PersonId)
+);
+
+
+
+CREATE TABLE Books(
+BookingId INT not null,
+UserId INT not null,
+VehicleId INT not null,
+PaymentId INT not null,
+foreign key(BookingId) references Booking(BookingId),
+foreign key(UserId) references MainUser(UserId),
+foreign key(VehicleId) references Vehicle(VehicleId),
+foreign key(PaymentId) references Payment(PaymentID)
+);
+
+select *from vehicle; 
+
+CREATE TABLE MakesPayment(
+
+BookingId INT not null,
+UserId INT not null,
+VehicleId INT not null,
+DriverId INT not null,
+foreign key(BookingId) references Booking(BookingId),
+foreign key(UserId) references MainUser(UserId),
+foreign key(VehicleId) references Vehicle(VehicleId),
+foreign key(DriverId) references Driver(DriverId)
+);
+
+CREATE TABLE PersonDetails(
+PersonId INT not null,
+PhoneNo VARCHAR(100) not null,
+foreign key(PersonId) references Person(PersonId)
+);
+
+
+
+
