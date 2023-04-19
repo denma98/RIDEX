@@ -1,12 +1,15 @@
 import React from "react";
 import "../pages/LoginStyles.css"
+import { Link } from "react-router-dom";
 
 
 const LogIn = () => {
 
     const handleClick = (route) => {
+        console.log("Button clicked");
         window.location = route;
       }
+      
     
   return ( 
   <div  className="container">
@@ -28,14 +31,15 @@ const LogIn = () => {
 
               <div className="newUser">
 
-                <p>If not registered <button onClick={() => handleClick('./SignUp')} >sign up</button> here.</p>
+                <p>If not registered <Link type="submit" style={{textDecoration: "none"}} to="/signup">Sign Up</Link> here.</p>
+                
                 </div>
           </form>
           <div className="social-login">
               <h3>log in via</h3>
               <div className="social-icons">
-              <i className="fa-brands fa-instagram"></i>
-                  <a href="#" className="social-login__icon fab fa-facebook"></a>
+              {/* <i className="fa-brands fa-instagram"></i> */}
+                  {/* <a href="#" className="social-login__icon fab fa-facebook"></a> */}
                   <a href="#" className="social-login__icon fab fa-twitter"></a>
               </div>
           </div>
