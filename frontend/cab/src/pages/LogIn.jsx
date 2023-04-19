@@ -1,5 +1,5 @@
 import React from "react";
-import "../pages/LoginStyles.css"
+import "../pages/styles/LoginStyles.css"
 import { Link } from "react-router-dom";
 
 
