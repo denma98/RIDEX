@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 const Back = styled.div `
   
@@ -65,9 +66,16 @@ const ButtonContainer = styled.div`
 
 
 const Home = () => {
-  return (
+
+  const handleClick = (route) => {
+    console.log("Button clicked");
+    window.location = route;
+  }
+
+  return (   
     
       <>
+      
       <Back>
 
       <Heading>
@@ -80,13 +88,13 @@ const Home = () => {
 
         <LocationButton>Current Location</LocationButton>
         <LocationButton>Destination</LocationButton>
-        <FontAwesomeIcon icon="fa-thin fa-arrow-right-long" />
-        <LocationButton style={{backgroundColor : '#D679B1'}}>Request Ride</LocationButton>
+        <LocationButton type = "submit"   style={{backgroundColor : '#D679B1'}} onClick={ () => {handleClick("/LogIn")}} >Request Ride</LocationButton>
 
       </ButtonContainer>
       </Back>
       
       </>
+      
       
 
       
