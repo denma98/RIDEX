@@ -1,6 +1,6 @@
 import React from "react";
 import "../pages/LoginStyles.css"
-
+<script src="https://kit.fontawesome.com/b4dbef6d39.js" crossorigin="anonymous"></script>
 
 const LogIn = () => {
   return ( 
@@ -24,7 +24,7 @@ const LogIn = () => {
           <div className="social-login">
               <h3>log in via</h3>
               <div className="social-icons">
-                  <a href="#" className="social-login__icon fab fa-instagram"></a>
+              <i class="fa-brands fa-instagram"></i>
                   <a href="#" className="social-login__icon fab fa-facebook"></a>
                   <a href="#" className="social-login__icon fab fa-twitter"></a>
               </div>
