@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
-
+.newUser{
+    margin-top: 40px;
+    font-size: 14px;
+    margin-left: 8%;
+}
 
 
 * {
@@ -11,7 +15,9 @@
 }
 
 body {
-	background: linear-gradient(90deg, #C7C5F4, #776BCC);		
+
+    background: linear-gradient(200.4deg, rgba(214, 121, 177, 0) 13.55%, rgba(144, 106, 168, 0.448994) 57.32%, #39579E 93.74%);
+    transform: rotate(0.71deg);	
 }
 
 .container {
@@ -33,6 +39,7 @@ body {
 	z-index: 1;
 	position: relative;	
 	height: 100%;
+	
 }
 
 .screen__background {		
@@ -96,6 +103,12 @@ body {
 .login__field {
 	padding: 20px 0px;	
 	position: relative;	
+}
+
+.signup__field{
+	padding: 20px 0px;	
+	position: relative;	
+	margin-top: -15px;
 }
 
 .login__icon {

@@ -1,10 +1,15 @@
 import React from "react";
 import "../pages/LoginStyles.css"
-<script src="https://kit.fontawesome.com/b4dbef6d39.js" crossorigin="anonymous"></script>
+
 
 const LogIn = () => {
+
+    const handleClick = (route) => {
+        window.location = route;
+      }
+    
   return ( 
-  <div className="container">
+  <div  className="container">
   <div className="screen">
       <div className="screen__content">
           <form className="login">
@@ -19,12 +24,17 @@ const LogIn = () => {
               <button className="button login__submit">
                   <span className="button__text">Log In Now</span>
                   <i className="button__icon fas fa-chevron-right"></i>
-              </button>				
+              </button>	
+
+              <div className="newUser">
+
+                <p>If not registered <button onClick={() => handleClick('./SignUp')} >sign up</button> here.</p>
+                </div>
           </form>
           <div className="social-login">
               <h3>log in via</h3>
               <div className="social-icons">
-              <i class="fa-brands fa-instagram"></i>
+              <i className="fa-brands fa-instagram"></i>
                   <a href="#" className="social-login__icon fab fa-facebook"></a>
                   <a href="#" className="social-login__icon fab fa-twitter"></a>
               </div>
