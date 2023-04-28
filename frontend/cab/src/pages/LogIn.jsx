@@ -4,15 +4,12 @@ import { Link } from "react-router-dom";
 
 
 const LogIn = () => {
-
-    const handleClick = (route) => {
-        console.log("Button clicked");
-        window.location = route;
-      }
-      
+     
     
   return ( 
+    
   <div  className="container">
+    
   <div className="screen">
       <div className="screen__content">
           <form className="login">
@@ -31,18 +28,12 @@ const LogIn = () => {
 
               <div className="newUser">
 
-                <p>If not registered <Link type="submit" style={{textDecoration: "none"}} to="/signup">Sign Up</Link> here.</p>
+                <p style={{fontSize: "11px"}}>If not registered Sign Up as<Link type="submit" style={{textDecoration: "none", }} to="/signupUser"> User</Link> here.</p>
+                <p style={{fontSize: "11px"}}>If not registered Sign Up as<Link type="submit" style={{textDecoration: "none"}} to="/signupDriver"> Driver</Link> here.</p>
                 
                 </div>
           </form>
-          <div className="social-login">
-              <h3>log in via</h3>
-              <div className="social-icons">
-              {/* <i className="fa-brands fa-instagram"></i> */}
-                  {/* <a href="#" className="social-login__icon fab fa-facebook"></a> */}
-                  <a href="#" className="social-login__icon fab fa-twitter"></a>
-              </div>
-          </div>
+          
       </div>
       <div className="screen__background">
           <span className="screen__background__shape screen__background__shape4"></span>

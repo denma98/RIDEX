@@ -1,26 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Map from "./Map.jsx";
 
+const Total = styled.div `
 
-const Back = styled.div `
-  
-  background-image: url(https://images.unsplash.com/photo-1653287886626-ebd9af889e27?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1931&q=80);
+margin-top : 50px;
+position: absolute;
+width: 1536px;
+height: 2045px;
+left: 0px;
+top: 0px;
 
-  /* display: flex; */
-  margin-top: -60px;
+background: #070A12;
+`
+
+const Back = styled.div`
+  background-image: url('./img/Frame.png');
   height: 100vh;
   width: 1536px;
+  background-size: 100%;
 `
 
 const Heading = styled.div`
   
   /* display: flex;  */
 
-  font-size: 60px;
+  font-size: 44px;
+  /* font-weight: 520; */
   color: white;
   text-align: center;
-   margin-left: 25%;
+  margin-left: 25%;
   margin-right:20% ;
   margin-top: 55px;
   height: 150px;
@@ -32,9 +42,9 @@ const Heading = styled.div`
 const SubHeading = styled.p`
   
   color: #D679B1;
-  margin-left: -30px;
+  margin-left: -40px;
   /* margin-right:10% ; */
-  margin-top: 0px;
+  margin-top: 10%px;
   width: 900px;
 `
 
@@ -64,6 +74,39 @@ const ButtonContainer = styled.div`
   
 `
 
+const Text = styled.div`
+  
+  font-size: 44px;
+  color: white;
+  text-align: center;
+  margin-left: -5%;
+  margin-top: 55px;
+  height: 150px;
+  width: 800px;
+    
+`
+
+  const SignContainer = styled.div`
+    position: absolute;
+    width: 1537px;
+    height: 192px;
+    left: 0px;
+    margin-top: 35%;
+    background: #131823;   
+  `
+
+const SignButton = styled.button`
+  color: white;
+  margin-top: 5%;
+  margin-left: 10%;
+  font-size: 40px;
+  font-weight: 600;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 20%;
+  
+`
 
 const Home = () => {
 
@@ -73,25 +116,48 @@ const Home = () => {
   }
 
   return (   
+
+    
     
       <>
       
+      <Total>
       <Back>
 
       <Heading>
-      Wherever you need to go, we've got you covered.
+      Wherever you need to go, <p></p> we've got you covered.
       <SubHeading>
         Book a cab in just a few clicks!
       </SubHeading>
 
-    </Heading><ButtonContainer>
+    </Heading>
+    
+    <ButtonContainer>
 
         <LocationButton>Current Location</LocationButton>
         <LocationButton>Destination</LocationButton>
         <LocationButton type = "submit"   style={{backgroundColor : '#D679B1'}} onClick={ () => {handleClick("/LogIn")}} >Request Ride</LocationButton>
 
+        
       </ButtonContainer>
+      
       </Back>
+
+      <Map/>
+
+      
+
+      <Text>
+        Rides we provide -
+      <img src="./img/Cars.png" style={{height: "600px"  , width : "1200px", marginLeft: "30%"}}/>
+      </Text>      
+      <p>If not registered Sign Up as<Link type="submit" style={{textDecoration: "none"}} to="/signup"> User</Link> here.</p>
+      <SignContainer>
+        <SignButton> <Link type="submit" style={{textDecoration: "none"}} to="/SignupUser"> Sign up as a Rider </Link> </SignButton>
+        <SignButton> <Link type="submit" style={{textDecoration: "none"}} to="/SignUpDriver"> Sign up as a Driver </Link> </SignButton>
+      </SignContainer>
+
+      </Total>
       
       </>
       

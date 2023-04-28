@@ -387,10 +387,10 @@ app.delete("/books/:id", (req, res) => {
 
     const {id} = req.params;
 
-    db.query(`DELETE FROM Books WHERE VehicleId = ?`, [id], (err, res, fields) => {
+    db.query(`DELETE FROM Books WHERE BookingId = ?`, [id], (err, res, fields) => {
         if( err) {console.log(err);
 
-        console.log("Error in deleting from Vehicle");
+        console.log("Error in deleting from Books");
         
         }
         else {

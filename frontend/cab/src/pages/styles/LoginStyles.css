@@ -21,6 +21,8 @@
 	align-items: center;
 	justify-content: center;
 	min-height: 100vh;
+	/* background-color: rgb(162, 26, 26); */
+	
 	background: linear-gradient(200.4deg, rgba(214, 121, 177, 0) 13.55%, rgba(144, 106, 168, 0.448994) 57.32%, #39579E 93.74%);
 }
 
